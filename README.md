@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Styled Components
+Testing out switching between styled components.
+```javascript
+import React from "react";
+import "./scss/styles.scss";
+import { FiDribbble, FiTwitter, FiInstagram, FiMail } from "react-icons/fi";
+import { MdWbSunny } from "react-icons/md";
+import { BsMoon } from "react-icons/bs";
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+import { useState } from "react";
 
-## Available Scripts
+// Styled Components
+import styled, { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme, GlobalStyles } from "./globals/themes";
 
-In the project directory, you can run:
+// Portrait
+import sitePortrait from "./assets/portrait.jpg";
 
-### `npm start`
+const StyledApp = styled.main``;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+function App() {
+   // Toggle light and dark theme
+   const [theme, setTheme] = useState("light");
+   const themeToggler = () => {
+      theme === "light" ? setTheme("dark") : setTheme("light");
+   };
+   return (
+      // The props takes in an object with CSS properties
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+         <GlobalStyles />
+         <StyledApp className="main-content">
+            <article className="main-content__profile">
+               <section className="main-content__profile--text">
+                  <h1>Lorem ipsum dolor sit</h1>
+                  <p>
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem minima excepturi
+                     tenetur officiis consequuntur, voluptate, aperiam laboriosam maxime sunt totam
+                     debitis doloribus, molestiae veritatis provident! Enim, minima blanditiis.
+                     Aspernatur, repellendus?
+                  </p>
+                  <form action="" className="main-content__form">
+                     {/* Email Field */}
+                     <div className="form-field email-field">
+                        <input type="text" name="email" id="email" placeholder="E-mail" required />
+                     </div>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+                     {/* Submit Field */}
+                     <div className="form-field submit-field">
+                        <input type="submit" value="Sign Up" />
+                     </div>
+                  </form>
 
-### `npm test`
+                  <div className="main-content__socials">
+                     {/* Dribbble Icon */}
+                     <a href="" className="dribbble" id="dribbble">
+                        <FiDribbble size="1.5em" />
+                     </a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+                     {/* Twitter Icon */}
+                     <a href="" className="twitter" id="twitter">
+                        <FiTwitter size="1.5em" />
+                     </a>
 
-### `npm run build`
+                     {/* Instagram Icon */}
+                     <a href="" className="instagram" id="instagram">
+                        <FiInstagram size="1.5em" />
+                     </a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+                     {/* Email Icon */}
+                     <a href="" className="email" id="email">
+                        <FiMail size="1.5em" />
+                     </a>
+                  </div>
+               </section>
+               <section className="main-content__profile--portrait">
+                  <img src={sitePortrait} alt="Girl with Pink Hair" width="200" />
+               </section>
+            </article>
+         </StyledApp>
+         <aside className="theme-toggle">
+            <button
+               className="theme-toogle__button"
+               onClick={() => {
+                  themeToggler();
+               }}
+            >
+               {theme === "light" ? <MdWbSunny size="2em" /> : <BsMoon size="2em" color="white" />}
+               <p>Toggle Theme</p>
+            </button>
+         </aside>
+      </ThemeProvider>
+   );
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default App;
+```
