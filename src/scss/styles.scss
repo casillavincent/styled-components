@@ -1,0 +1,193 @@
+//Imports
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif&family=Oxygen:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,100&display=swap");
+$brand_font_01: "Oxygen", sans-serif;
+$brand_font_02: "Noto Serif", serif;
+$brand_font_03: "Roboto", sans-serif;
+$brand_color_01: #6797a3;
+
+html {
+   font-size: 1em;
+   * {
+      padding: 0px;
+      margin: 0px;
+      box-sizing: border-box;
+   }
+}
+
+body {
+   * {
+      font-family: $brand_font_03;
+      font-weight: 100;
+   }
+}
+h1,
+h2,
+h3,
+h4,
+h5.h6 {
+   font-family: $brand_font_01;
+   font-weight: 300;
+}
+
+p {
+   font-size: 0.9em;
+   line-height: 1.75;
+   @media screen and (min-width: 75em) {
+      font-size: 1.25em;
+   }
+}
+
+h1 {
+   font-size: 1.75em;
+   @media screen and (min-width: 75em) {
+      font-size: 3em;
+   }
+}
+
+//Main
+.main-content {
+   @media screen and (min-width: 50em) {
+      background: white;
+   }
+
+   //Text Content
+   article.main-content__profile {
+      height: 100vh;
+      min-height: 800px;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+
+      @media screen and (min-width: 75em) {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+      }
+
+      //Portrait Section
+      section.main-content__profile--portrait {
+         margin-bottom: 50px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         img {
+            width: 250px;
+            max-width: 500px;
+            height: 250px;
+            max-height: 500px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 500px;
+            padding: 25px;
+
+            @media screen and (min-width: 75em) {
+               width: 500px;
+               height: 500px;
+            }
+         }
+      } //end of portrait
+
+      //Text Section
+      section.main-content__profile--text {
+         padding: 0px 35px;
+         max-width: 600px;
+         margin: 0px auto 0px auto;
+         h1 {
+            margin-bottom: 5px;
+         }
+         p {
+            margin-bottom: 30px;
+         }
+
+         @media screen and (min-width: 25em) {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+         }
+
+         @media screen and (min-width: 75em) {
+            margin-left: 13%;
+            max-width: none;
+
+            h1 {
+               margin-bottom: 25px;
+            }
+            p {
+               margin-bottom: 50px;
+            }
+         }
+
+         //Form
+         form.main-content__form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            @media screen and (min-width: 25em) {
+               flex-direction: row;
+            }
+            .email-field input {
+               width: 250px;
+               height: 40px;
+               border-style: none;
+               border-radius: 150px;
+               margin-bottom: 15px;
+               background: rgb(235, 235, 235);
+               text-indent: 20px;
+               @media screen and (min-width: 25em) {
+                  margin: 0px;
+                  margin-right: 10px;
+               }
+               @media screen and (min-width: 75em) {
+                  margin: 0px;
+                  margin-right: 20px;
+                  width: 410px;
+                  height: 75px;
+                  text-indent: 40px;
+                  font-size: 1.25em;
+               }
+            }
+            .submit-field input {
+               width: 100px;
+               height: 40px;
+               border-style: none;
+               border-radius: 150px;
+               background: $brand_color_01;
+               color: white;
+               font-family: $brand_font_01;
+               @media screen and (min-width: 75em) {
+                  margin: 0px;
+                  width: 160px;
+                  height: 75px;
+                  font-size: 1.25em;
+               }
+            }
+         } //end of form
+
+         // Socials
+         div.main-content__socials {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            a {
+               margin: 10px;
+               border: 2px solid $brand_color_01;
+               padding: 10px;
+               border-radius: 50px;
+               display: flex;
+               flex-direction: column-reverse;
+               align-items: center;
+               justify-content: center;
+               svg {
+                  color: #6797a3;
+               }
+            }
+         }
+      }
+   }
+}
