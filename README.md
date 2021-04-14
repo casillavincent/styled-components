@@ -1,2 +1,2 @@
 # Styled Components
-A small project working with alternating dark and light themes.
+Testing out switching between styled components.
