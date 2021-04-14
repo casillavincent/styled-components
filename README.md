@@ -1,5 +1,8 @@
 # Styled Components
-Testing out switching between styled components.
+I wanted to play around with light/dark mode toggles using styled components.
+- - -
+## See it live [here](https://vcasilla-theme-toggler.netlify.app/)
+
 ```javascript
 import React from "react";
 import "./scss/styles.scss";
