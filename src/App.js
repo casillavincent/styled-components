@@ -1,15 +1,31 @@
 import React from "react";
 import "./scss/styles.scss";
 import { FiDribbble, FiTwitter, FiInstagram, FiMail } from "react-icons/fi";
+import { MdWbSunny } from "react-icons/md";
+import { BsMoon } from "react-icons/bs";
 
-//Portrait
+import { useState } from "react";
+
+// Styled Components
+import styled, { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme, GlobalStyles } from "./globals/themes";
+
+// Portrait
 import sitePortrait from "./assets/portrait.jpg";
-import ThemeToggle from "./components/ThemeToggle";
+
+const StyledApp = styled.main``;
 
 function App() {
+   // Toggle light and dark theme
+   const [theme, setTheme] = useState("light");
+   const themeToggler = () => {
+      theme === "light" ? setTheme("dark") : setTheme("light");
+   };
    return (
-      <>
-         <main className="main-content">
+      // The props takes in an object with CSS properties
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+         <GlobalStyles />
+         <StyledApp className="main-content">
             <article className="main-content__profile">
                <section className="main-content__profile--text">
                   <h1>Lorem ipsum dolor sit</h1>
@@ -57,9 +73,19 @@ function App() {
                   <img src={sitePortrait} alt="Girl with Pink Hair" width="200" />
                </section>
             </article>
-         </main>
-         <ThemeToggle />
-      </>
+         </StyledApp>
+         <aside className="theme-toggle">
+            <button
+               className="theme-toogle__button"
+               onClick={() => {
+                  themeToggler();
+               }}
+            >
+               {theme === "light" ? <MdWbSunny size="2em" /> : <BsMoon size="2em" color="white" />}
+               <p>Toggle Theme</p>
+            </button>
+         </aside>
+      </ThemeProvider>
    );
 }
 

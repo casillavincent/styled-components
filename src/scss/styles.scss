@@ -1,6 +1,8 @@
-//Imports
+// Imports
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif&family=Oxygen:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,100&display=swap");
+
+// Brand Variables
 $brand_font_01: "Oxygen", sans-serif;
 $brand_font_02: "Noto Serif", serif;
 $brand_font_03: "Roboto", sans-serif;
@@ -16,6 +18,8 @@ html {
 }
 
 body {
+   max-width: 1920px;
+   margin: auto;
    * {
       font-family: $brand_font_03;
       font-weight: 100;
@@ -47,10 +51,6 @@ h1 {
 
 //Main
 .main-content {
-   @media screen and (min-width: 50em) {
-      background: white;
-   }
-
    //Text Content
    article.main-content__profile {
       height: 100vh;
@@ -158,6 +158,9 @@ h1 {
                background: $brand_color_01;
                color: white;
                font-family: $brand_font_01;
+               &:hover {
+                  cursor: pointer;
+               }
                @media screen and (min-width: 75em) {
                   margin: 0px;
                   width: 160px;
@@ -183,11 +186,75 @@ h1 {
                flex-direction: column-reverse;
                align-items: center;
                justify-content: center;
+               transition: all 0.5s ease-in-out;
+
                svg {
                   color: #6797a3;
+                  transition: all 0.5s ease-in-out;
+               }
+               &:hover {
+                  background: $brand_color_01;
+                  svg {
+                     color: white;
+                  }
                }
             }
          }
       }
+   }
+}
+
+// Change Theme Button
+aside.theme-toggle {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   button {
+      padding: 5px 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      border-style: none;
+      background: none;
+      animation: heartbeat 1.5s ease-in-out infinite both;
+
+      p {
+         margin-left: 5px;
+      }
+
+      &:hover {
+         cursor: pointer;
+         animation: none;
+         outline: transparent;
+      }
+      &:focus {
+         outline: transparent;
+      }
+   }
+}
+
+// Keyframes
+@keyframes heartbeat {
+   from {
+      transform: scale(1);
+      transform-origin: center center;
+      animation-timing-function: ease-out;
+   }
+   10% {
+      transform: scale(0.91);
+      animation-timing-function: ease-in;
+   }
+   17% {
+      transform: scale(0.98);
+      animation-timing-function: ease-out;
+   }
+   33% {
+      transform: scale(0.87);
+      animation-timing-function: ease-in;
+   }
+   45% {
+      transform: scale(1);
+      animation-timing-function: ease-out;
    }
 }
